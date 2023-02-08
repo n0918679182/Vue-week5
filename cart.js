@@ -123,6 +123,13 @@ const app = Vue.createApp({
                 this.loadingItem = '';
             }).catch(err=>alert(err.response.data.message));
         },
+        deleteAll() {
+            this.loadingItem = 'deleteAll';
+            axios.delete(`${apiUrl}/v2/api/${apiPath}/carts`).then(resp => {
+                this.getCarts();
+                this.loadingItem = '';
+            }).catch(err=>alert(err.response.data.message));
+        },
         changeLoading(modalLoading) {
             this.loadingItem = modalLoading;
         },
